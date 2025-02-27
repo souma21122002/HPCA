@@ -1,0 +1,282 @@
+### **a. “The program execution in a computer involves performing instruction cycles, which includes two types of activities.” What are those? Explain.**
+
+The instruction cycle in a computer involves two main activities:
+
+1. **Fetch Cycle**:
+   - The CPU fetches the next instruction from memory. The **Program Counter (PC)** holds the address of the next instruction to be executed. The instruction is fetched from memory and stored in the **Instruction Register (IR)**. The PC is then incremented to point to the next instruction.
+
+2. **Execute Cycle**:
+   - The CPU decodes the fetched instruction and performs the required operation. This may involve:
+     - Reading data from memory (if the instruction requires data).
+     - Performing arithmetic or logic operations (e.g., addition, subtraction, AND, OR).
+     - Writing data back to memory (if the instruction modifies data).
+   - The execution cycle completes the operation specified by the instruction.
+
+These two activities (fetch and execute) are repeated for every instruction in a program.
+
+---
+
+### **b. What are the two basic strategies used to improve the performance of a computer?**
+
+The two basic strategies to improve computer performance are:
+
+1. **Improving the performance of a single processor**:
+   - This involves enhancing the speed and efficiency of a single CPU. Techniques include:
+     - **Increasing clock speed**: Faster clock cycles allow more instructions to be executed per second.
+     - **Using faster memory**: Reducing memory access latency improves overall performance.
+     - **Pipelining**: Breaking instruction execution into stages to overlap fetch, decode, and execute operations.
+     - **Superscalar execution**: Executing multiple instructions simultaneously using multiple functional units.
+     - **Out-of-order execution**: Reordering instructions to maximize CPU utilization.
+
+2. **Parallel Processing**:
+   - This involves using multiple processors or cores to execute tasks simultaneously. Techniques include:
+     - **Multiprocessing**: Using multiple CPUs in a single system.
+     - **Multicore architectures**: Integrating multiple cores on a single chip.
+     - **Distributed computing**: Using multiple computers connected via a network to solve large problems.
+
+---
+
+### **c. What are the significant differences between instruction-level parallelism and processor-level parallelism?**
+
+- **Instruction-Level Parallelism (ILP)**:
+  - ILP refers to the execution of multiple instructions simultaneously within a single processor. It is achieved through techniques like:
+    - **Pipelining**: Breaking instruction execution into stages to overlap operations.
+    - **Superscalar execution**: Using multiple functional units to execute multiple instructions in parallel.
+    - **Out-of-order execution**: Reordering instructions to maximize CPU utilization.
+  - ILP focuses on optimizing the execution of instructions within a single processor.
+
+- **Processor-Level Parallelism**:
+  - This involves using multiple processors or cores to execute tasks in parallel. It includes:
+    - **Multiprocessing**: Using multiple CPUs in a single system.
+    - **Multicore architectures**: Integrating multiple cores on a single chip.
+    - **Distributed computing**: Using multiple computers connected via a network to solve large problems.
+  - Processor-level parallelism focuses on executing different tasks or threads simultaneously across multiple processors.
+
+---
+
+### **d. What is an MFU? Mention with a diagram how it helps in superscalar processing.**
+
+- **MFU (Multiple Functional Units)**:
+  - An MFU refers to the presence of multiple functional units (e.g., ALUs, multipliers, dividers) within a CPU. These units allow the processor to execute multiple instructions simultaneously, improving performance.
+
+- **Superscalar Processing**:
+  - In superscalar processors, multiple instructions are fetched, decoded, and executed in parallel using multiple functional units. This increases the throughput of the processor.
+
+**Diagram**:
+```
+Instruction Fetch → Instruction Decode → Multiple Functional Units (ALU, Multiplier, Divider, etc.) → Execution
+```
+
+- **How MFU Helps**:
+  - By having multiple functional units, a superscalar processor can execute multiple instructions in parallel, as long as there are no dependencies between them. This increases the number of instructions completed per clock cycle, improving performance.
+
+---
+
+### **e. What primary aspects should a computer architect consider before finalizing an instruction set?**
+
+Before finalizing an instruction set, a computer architect should consider the following aspects:
+
+1. **Instruction Types**:
+   - The instruction set should include a variety of instruction types, such as arithmetic, logic, data transfer, control flow, and input/output instructions.
+
+2. **Instruction Format**:
+   - The format of instructions (e.g., fixed-length vs. variable-length) affects decoding complexity and execution speed.
+
+3. **Addressing Modes**:
+   - The addressing modes (e.g., immediate, direct, indirect, indexed) determine how operands are accessed.
+
+4. **Registers**:
+   - The number and type of registers (e.g., general-purpose, special-purpose) affect performance and programming flexibility.
+
+5. **Performance**:
+   - The instruction set should be designed to maximize performance, considering factors like pipelining, parallelism, and memory access.
+
+6. **Compatibility**:
+   - The instruction set should be compatible with existing software and hardware.
+
+7. **Power Consumption**:
+   - The instruction set should be designed to minimize power consumption, especially for mobile and embedded systems.
+
+---
+
+### **f. Classify different techniques of parallelism with a neat diagram.**
+
+Parallelism techniques can be classified as follows:
+
+1. **Instruction-Level Parallelism (ILP)**:
+   - Techniques: Pipelining, superscalar execution, out-of-order execution.
+   - Focus: Executing multiple instructions simultaneously within a single processor.
+
+2. **Data-Level Parallelism (DLP)**:
+   - Techniques: SIMD (Single Instruction, Multiple Data), vector processing.
+   - Focus: Performing the same operation on multiple data elements simultaneously.
+
+3. **Task-Level Parallelism (TLP)**:
+   - Techniques: Multithreading, multiprocessing, multicore architectures.
+   - Focus: Executing multiple tasks or threads simultaneously across multiple processors.
+
+4. **Memory-Level Parallelism (MLP)**:
+   - Techniques: Cache prefetching, memory interleaving.
+   - Focus: Optimizing memory access to reduce latency and increase throughput.
+
+**Diagram**:
+```
+Parallelism Techniques
+├── Instruction-Level Parallelism (ILP)
+│   ├── Pipelining
+│   ├── Superscalar Execution
+│   └── Out-of-Order Execution
+├── Data-Level Parallelism (DLP)
+│   ├── SIMD
+│   └── Vector Processing
+├── Task-Level Parallelism (TLP)
+│   ├── Multithreading
+│   ├── Multiprocessing
+│   └── Multicore Architectures
+└── Memory-Level Parallelism (MLP)
+    ├── Cache Prefetching
+    └── Memory Interleaving
+```
+
+---
+
+### **g. What type of parallelism can be found in MMX in Pentium? Explain with a block diagram.**
+
+- **MMX (MultiMedia eXtensions)** in Pentium processors uses **Data-Level Parallelism (DLP)**.
+- MMX instructions operate on multiple data elements simultaneously using **SIMD (Single Instruction, Multiple Data)** techniques.
+- For example, an MMX instruction can perform the same operation (e.g., addition) on 8 bytes, 4 words, or 2 double words in parallel.
+
+**Block Diagram**:
+```
+MMX Register (64-bit)
+├── Byte 0 → Operation
+├── Byte 1 → Operation
+├── Byte 2 → Operation
+├── Byte 3 → Operation
+├── Byte 4 → Operation
+├── Byte 5 → Operation
+├── Byte 6 → Operation
+└── Byte 7 → Operation
+```
+
+---
+
+### **h. “Time taken to complete m instructions in an n-stage pipeline is approximately n.” Establish.**
+
+- In a pipelined processor, the time to complete **m instructions** in an **n-stage pipeline** is given by:
+  \[
+  \text{Total Time} = n + (m - 1) \text{ clock cycles}
+  \]
+- For large **m**, the term **(m - 1)** dominates, so the time is approximately **m clock cycles**.
+- However, the question states that the time is approximately **n**, which is incorrect. The correct approximation is **m**.
+
+---
+
+### **i. A program takes 200 ns for execution on a non-pipelined processor. If we need to run 100 programs of the same type on four four-stage pipelined processors with a clock period of 5 ns, what is the speed-up ratio of the pipeline? What is the maximum achievable speed-up?**
+
+- **Non-pipelined Execution Time**:
+  \[
+  \text{Time per program} = 200 \, \text{ns}
+  \]
+  \[
+  \text{Total time for 100 programs} = 100 \times 200 \, \text{ns} = 20,000 \, \text{ns}
+  \]
+
+- **Pipelined Execution Time**:
+  \[
+  \text{Clock period} = 5 \, \text{ns}
+  \]
+  \[
+  \text{Time for one program} = n + (m - 1) \times \text{clock period} = 4 + (100 - 1) \times 5 \, \text{ns} = 4 + 495 = 499 \, \text{ns}
+  \]
+  \[
+  \text{Total time for 100 programs} = 499 \, \text{ns}
+  \]
+
+- **Speed-up Ratio**:
+  \[
+  \text{Speed-up} = \frac{\text{Non-pipelined time}}{\text{Pipelined time}} = \frac{20,000}{499} \approx 40.08
+  \]
+
+- **Maximum Achievable Speed-up**:
+  \[
+  \text{Maximum speed-up} = \text{Number of stages} = 4
+  \]
+
+---
+
+### **j. What is a data hazard in a pipeline? What can be a possible software solution to this problem?**
+
+- **Data Hazard**:
+  - A data hazard occurs when an instruction depends on the result of a previous instruction that has not yet completed. This can cause incorrect results or stalls in the pipeline.
+
+- **Software Solution**:
+  - **Instruction Reordering**: The compiler can reorder instructions to minimize dependencies and avoid hazards.
+  - **Inserting NOPs (No Operations)**: The compiler can insert NOPs to create delays and allow dependent instructions to complete.
+
+---
+
+### **k. What are the differences between scalar and vector registers? How is chaining used in vector processing?**
+
+- **Scalar Registers**:
+  - Store a single value (e.g., an integer or floating-point number).
+  - Used for scalar operations (one operation at a time).
+
+- **Vector Registers**:
+  - Store multiple values (e.g., an array of integers or floating-point numbers).
+  - Used for vector operations (multiple operations in parallel).
+
+- **Chaining in Vector Processing**:
+  - Chaining allows the output of one vector operation to be directly fed into another vector operation without storing intermediate results in memory. This reduces latency and improves performance.
+
+---
+
+### **l. What are the major drawbacks of a CISC computer?**
+
+1. **Complexity**:
+   - CISC (Complex Instruction Set Computer) architectures have complex instructions, making the hardware and compiler design more complicated.
+
+2. **Slower Execution**:
+   - Complex instructions take more clock cycles to execute, reducing performance.
+
+3. **Power Consumption**:
+   - CISC processors consume more power due to their complexity.
+
+4. **Limited Pipelining**:
+   - The complexity of CISC instructions makes it difficult to implement efficient pipelining.
+
+---
+
+### **m. How does main memory interleaving increase the performance of a computer?**
+
+- **Memory Interleaving**:
+  - Memory interleaving divides memory into multiple banks that can be accessed simultaneously. This allows multiple memory accesses to occur in parallel, reducing latency and increasing throughput.
+
+- **Performance Improvement**:
+  - By overlapping memory accesses, interleaving reduces the time the CPU spends waiting for data, improving overall performance.
+
+---
+
+### **n. What kinds of interrupts are the following?**
+
+1. **Data Transfer → I/O Interrupt**:
+   - Generated when data transfer between I/O devices and memory is complete.
+
+2. **INT Instruction → Software Interrupt**:
+   - Generated by software to request services from the operating system.
+
+3. **Error in CPU Hardware → Hardware Interrupt**:
+   - Generated when a hardware error occurs (e.g., power failure, memory error).
+
+4. **Overflow → Arithmetic Interrupt**:
+   - Generated when an arithmetic operation results in an overflow.
+
+5. **Illegal Opcode → Exception**:
+   - Generated when the CPU encounters an invalid instruction.
+
+6. **End of I/O → I/O Interrupt**:
+   - Generated when an I/O operation completes.
+
+---
+
+Let me know if you need further clarification!
